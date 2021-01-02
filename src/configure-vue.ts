@@ -1,7 +1,9 @@
 import {
   MdField,
   MdChips,
-  MdButton
+  MdButton,
+  MdCard,
+  MdRipple
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
 } from "vue-material/dist/components";
@@ -13,4 +15,6 @@ import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
 Vue.use(MdField);
 Vue.use(MdChips);
+Vue.use(MdCard);
 Vue.use(MdButton);
+Vue.use(MdRipple);
