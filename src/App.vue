@@ -2,7 +2,8 @@
   .container
     .sidebar
       md-button(to="/new").md-primary.md-raised New note
-      note-card(v-for="note in notes", :note="note", :stripped="true" )
+      router-link(:to="'/' + note.id", v-for="note in notes")
+        note-card(:note="note", :stripped="true" )
 
     .content
       router-view/

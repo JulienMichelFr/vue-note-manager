@@ -16,6 +16,13 @@ export default new Vuex.Store({
       return id;
     }
   },
+  getters: {
+    findNoteById(state) {
+      return (id: string): Note | undefined => {
+        return state.notes.find(note => note.id === id);
+      };
+    }
+  },
   actions: {},
   modules: {}
 });

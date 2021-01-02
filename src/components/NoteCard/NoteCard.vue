@@ -1,14 +1,13 @@
 <template lang="pug">
-  md-card(md-with-hover)
-    md-ripple
-      md-card-header
-        .md-title {{note.title}}
-        .md-subheader
-          div
-            md-chip(v-for="tag in note.tags") {{tag}}
-          div {{date}}
-      md-card-content
-        div(v-html="markdown")
+  md-card(:md-with-hover="widthHover")
+    md-card-header
+      .md-title {{note.title}}
+      .md-subheader
+        div
+          md-chip(v-for="tag in note.tags") {{tag}}
+        div {{date}}
+    md-card-content
+      div(v-html="markdown")
 </template>
 
 <script lang="ts">
@@ -30,8 +29,21 @@ export default class NoteCard extends Vue {
   })
   private note!: Note;
 
-  @Prop({ type: Boolean })
-  private stripped;
+  @Prop({
+    type: Boolean,
+    default() {
+      return false;
+    }
+  })
+  private widthHover: boolean;
+
+  @Prop({
+    type: Boolean,
+    default() {
+      return false;
+    }
+  })
+  private stripped: boolean;
 
   get date(): string {
     return DateFormatter.format(this.note.date);
@@ -51,6 +63,6 @@ export default class NoteCard extends Vue {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding: 0;
+  padding: 0 !important;
 }
 </style>
