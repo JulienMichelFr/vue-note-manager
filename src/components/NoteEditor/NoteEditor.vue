@@ -1,15 +1,17 @@
 <template lang="pug">
-  form(novalidate="true", @submit.prevent="submit")
+  form(@submit.prevent="submit")
     div
-      label(for="title") Title
-      input(v-model="note.title")#title
+      md-field
+        label Title
+        md-input(v-model="note.title", :required="true")#title
     div
-      label(for="tags") Tags
-      input(v-model="note.tags")#tags
+        md-chips(v-model="note.tags", md-placeholder="Tags")#tags
     div
-      label(for="content") Content
-      textarea(v-model="note.content")#content
-    button(type="submit") Create
+      md-field
+        label Content
+        md-textarea(v-model="note.content", :required="true")
+    .md-layout.md-gutter.md-alignment-top-right
+      md-button(type="submit").md-primary Save
 </template>
 
 <script lang="ts">
