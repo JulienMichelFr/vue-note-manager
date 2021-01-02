@@ -23,7 +23,7 @@ export default class NewNote extends Vue {
   };
 
   submit(note: CreateNote) {
-    this.$store.commit("createNote", note);
+    this.$store.dispatch("createNoteAndNavigate", note);
     this.note = {
       content: "",
       date: new Date(),

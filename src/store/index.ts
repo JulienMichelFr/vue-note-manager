@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { CreateNote, Note } from "@/models";
 import { v4 } from "uuid";
+import router from "@/router";
 
 Vue.use(Vuex);
 
@@ -10,9 +11,9 @@ export default new Vuex.Store({
     notes: Array<Note>()
   },
   mutations: {
-    createNote(state, note: CreateNote) {
+    createNote(state, note: Note) {
       const id = v4();
-      state.notes.push({ ...note, id });
+      state.notes.push(note);
       return id;
     }
   },
@@ -23,6 +24,12 @@ export default new Vuex.Store({
       };
     }
   },
-  actions: {},
+  actions: {
+    async createNoteAndNavigate({ commit }, note: CreateNote) {
+      const id = v4();
+      commit("createNote", { ...note, id });
+      await router.push({ path: `/${id}` });
+    }
+  },
   modules: {}
 });
