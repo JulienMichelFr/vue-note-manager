@@ -4,7 +4,7 @@
       .md-title {{note.title}}
       .md-subheader
         div
-          md-chip(v-for="tag in note.tags") {{tag}}
+          md-chip(v-for="(tag, index) in note.tags", :key="index" ) {{tag}}
         div {{date}}
     md-card-content
       div(v-html="markdown")
@@ -35,7 +35,7 @@ export default class NoteCard extends Vue {
       return false;
     }
   })
-  private widthHover: boolean;
+  private widthHover!: boolean;
 
   @Prop({
     type: Boolean,
@@ -43,7 +43,7 @@ export default class NoteCard extends Vue {
       return false;
     }
   })
-  private stripped: boolean;
+  private stripped!: boolean;
 
   get date(): string {
     return DateFormatter.format(this.note.date);
@@ -58,7 +58,7 @@ export default class NoteCard extends Vue {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .md-subheader {
   display: flex;
   flex-flow: row nowrap;

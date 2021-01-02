@@ -11,8 +11,8 @@
           label Content
           md-textarea(v-model="$v.note.content.$model", :required="true")
         div(v-html="markdown")
-      .md-layout.md-gutter.md-alignment-top-right
-        md-button(type="button", :disabled="$v.$invalid", @click="submit").md-primary Save
+      .end
+        md-button.md-raised.md-primary(type="button", :disabled="$v.$invalid", @click="submit") Save
 </template>
 
 <script lang="ts">
@@ -54,6 +54,7 @@ export default class NoteEditor extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/utilities";
 .flex-container {
   display: flex;
   flex-flow: row nowrap;

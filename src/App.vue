@@ -2,7 +2,7 @@
   .container
     .sidebar
       md-button(to="/new").md-primary.md-raised New note
-      router-link(:to="'/' + note.id", v-for="note in notes")
+      router-link(:to="'/' + note.id", v-for="note in notes" :key="note.id")
         note-card(:note="note", :stripped="true" )
 
     .content
@@ -31,6 +31,7 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+$container-padding: 10px;
 .container {
   display: flex;
   flex-flow: row nowrap;
@@ -41,7 +42,7 @@ export default class App extends Vue {
 .sidebar {
   width: 20vw;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.12);
-  padding: 10px;
+  padding: $container-padding;
 
   & > * {
     margin-bottom: 10px;
@@ -56,5 +57,6 @@ export default class App extends Vue {
 
 .content {
   flex: 1 1 auto;
+  padding: $container-padding;
 }
 </style>

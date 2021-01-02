@@ -1,5 +1,8 @@
 <template lang="pug">
-  note-card(:note="note")
+  div
+    note-card(:note="note")
+    .end
+      md-button.md-raised.md-primary(:to="'/' + note.id + '/edit'") Update
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
@@ -11,6 +14,9 @@ import { Note } from "@/models";
 })
 export default class NoteDetail extends Vue {
   @Prop({ required: true })
-  private note: Note;
+  private note!: Note;
 }
 </script>
+<style lang="scss" scoped>
+@import "../assets/utilities";
+</style>
