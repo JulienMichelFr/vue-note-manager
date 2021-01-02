@@ -1,1 +1,1 @@
-import "../../src/configure-vue-material";
+import "@/configure-vue";

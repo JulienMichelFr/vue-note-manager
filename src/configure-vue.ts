@@ -8,9 +8,9 @@ import {
 import Vue from "vue";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
+import Vuelidate from "vuelidate";
 
+Vue.use(Vuelidate);
 Vue.use(MdField);
 Vue.use(MdChips);
 Vue.use(MdButton);
-// Vue.use(MdInput);
-// Vue.use(MdTextarea);
